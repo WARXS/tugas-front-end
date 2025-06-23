@@ -1,0 +1,514 @@
+/* General Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+a {
+    color: #ffd700; /* Gold/yellow for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #000;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 2em;
+    color: #ffd700;
+    margin: 0;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar ul li {
+    margin-left: 25px;
+}
+
+.navbar ul li a {
+    color: #e0e0e0;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+/* ------------------------------------------------ */
+/* NEW STYLING FOR GRAND PROFILE SECTION */
+/* ------------------------------------------------ */
+.grand-profile {
+    position: relative; /* Penting untuk positioning emas */
+    min-height: 400px; /* Cukup tinggi untuk efek emas */
+    background: linear-gradient(135deg, #2a0000, #000000); /* Gelap dramatis */
+    color: #fff;
+    text-align: center;
+    padding: 80px 20px;
+    margin-top: 30px;
+    border-radius: 15px;
+    overflow: hidden; /* Penting agar emas tidak meluber keluar */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grand-profile .profile-content {
+    position: relative;
+    z-index: 2; /* Agar konten di atas emas */
+    animation: fadeInScale 1.5s ease-out forwards; /* Animasi muncul */
+}
+
+.grand-profile img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #ffd700; /* Emas */
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.7); /* Kilau emas */
+    margin-bottom: 25px;
+    animation: rotateIn 1.5s ease-out; /* Animasi berputar masuk */
+}
+
+.grand-profile .grand-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5em; /* Sangat besar */
+    color: #ffdb58; /* Warna emas terang */
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.5); /* Efek bercahaya */
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.grand-profile .grand-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4.5em; /* Lebih besar dari judul */
+    color: #ffd700; /* Warna emas */
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.7), 0 0 60px rgba(255, 215, 0, 0.4); /* Kilau super megah */
+    letter-spacing: 5px;
+    animation: textShine 3s infinite alternate; /* Animasi berkilau */
+}
+
+.grand-profile .grand-tagline {
+    font-size: 1.5em;
+    color: #ccc;
+    font-style: italic;
+    margin-bottom: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Emas-emas di bawah layar */
+.gold-piles {
+    position: absolute;
+    bottom: -50px; /* Mulai dari bawah, lalu geser ke atas */
+    left: 0;
+    width: 100%;
+    height: 150px; /* Tinggi tumpukan emas */
+    background: 
+        radial-gradient(ellipse at center, #ffd700 0%, #aa8f00 70%, #8c7600 100%) no-repeat center bottom / 80% 100px, /* Emas besar di tengah */
+        radial-gradient(ellipse at bottom left, #ffdf00 0%, #bb9c00 70%, #9e8300 100%) no-repeat 10% bottom / 40% 70px, /* Emas kiri */
+        radial-gradient(ellipse at bottom right, #ffdf00 0%, #bb9c00 70%, #9e8300 100%) no-repeat 90% bottom / 40% 70px; /* Emas kanan */
+    background-size: cover; /* Agar menutupi area */
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.9); /* Kilau emas yang kuat */
+    z-index: 1; /* Di bawah konten profil */
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7)); /* Efek cahaya */
+    opacity: 0; /* Awalnya tersembunyi */
+    transition: all 1.5s ease-out; /* Transisi untuk muncul */
+    transform: translateY(100%); /* Mulai dari bawah layar */
+}
+
+.grand-profile.active .gold-piles {
+    opacity: 1;
+    transform: translateY(0); /* Geser ke posisi terlihat */
+}
+
+
+/* ANIMATIONS */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotateY(180deg) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: rotateY(0deg) scale(1);
+    }
+}
+
+@keyframes textShine {
+    from {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.7), 0 0 60px rgba(255, 215, 0, 0.4);
+    }
+    to {
+        text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 50px rgba(255, 215, 0, 0.8), 0 0 70px rgba(255, 215, 0, 0.5);
+    }
+}
+
+
+/* ------------------------------------------------ */
+/* EXISTING STYLING - TIDAK BERUBAH */
+/* ------------------------------------------------ */
+
+.product-detail {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #2b2b2b;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    margin-top: 30px;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.product-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    border: 3px solid #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.image-caption {
+    font-style: italic;
+    color: #aaa;
+    margin-top: 10px;
+}
+
+.product-info {
+    flex: 2;
+    min-width: 350px;
+}
+
+.product-title {
+    font-size: 2.8em;
+    color: #ffd700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.product-price {
+    font-size: 1.8em;
+    color: #ff4500; /* Orange-red for emphasis */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.product-description h3,
+.product-attributes h3 {
+    font-size: 1.5em;
+    color: #fff;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.product-attributes ul {
+    list-style: none;
+    padding: 0;
+}
+
+.product-attributes ul li {
+    background-color: #3a3a3a;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-left: 5px solid #ffd700;
+    border-radius: 4px;
+    font-size: 1.1em;
+}
+
+.add-to-cart-button {
+    background-color: #8b0000; /* Dark red, dominant color */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.add-to-cart-button:hover {
+    background-color: #a00000;
+    transform: translateY(-2px);
+}
+
+/* Contact Section */
+.contact-section {
+    margin-top: 50px;
+    background-color: #2b2b2b;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.5em;
+    color: #ffd700;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.contact-section p {
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    color: #ccc;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: calc(100% - 20px);
+    padding: 12px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    font-size: 1em;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #ffd700;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+.submit-button {
+    background-color: #8b0000; /* Dark red */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-button:hover {
+    background-color: #a00000;
+    transform: translateY(-2px);
+}
+
+
+/* Footer */
+.footer {
+    background-color: #000;
+    color: #aaa;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+    }
+
+    .navbar ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar ul li {
+        margin: 0 10px 10px 10px;
+    }
+
+    .product-detail {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-image, .product-info {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .product-detail img {
+        max-width: 300px; /* Adjust for smaller screens */
+    }
+
+    /* Adjust grand profile for smaller screens */
+    .grand-profile {
+        padding: 40px 10px;
+        min-height: 300px;
+    }
+    .grand-profile img {
+        width: 150px;
+        height: 150px;
+    }
+    .grand-profile .grand-title {
+        font-size: 2.5em;
+    }
+    .grand-profile .grand-name {
+        font-size: 3.5em;
+        letter-spacing: 2px;
+    }
+    .grand-profile .grand-tagline {
+        font-size: 1.2em;
+    }
+
+
+    .product-title {
+        font-size: 2.2em;
+        text-align: center;
+    }
+
+    .product-price {
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    .add-to-cart-button {
+        padding: 12px 20px;
+        font-size: 1.1em;
+    }
+
+    .contact-section h2 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .logo {
+        font-size: 1.8em;
+    }
+
+    .navbar ul li a {
+        font-size: 0.9em;
+    }
+
+    /* Further adjust grand profile for very small screens */
+    .grand-profile {
+        padding: 30px 5px;
+        min-height: 250px;
+    }
+    .grand-profile img {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 15px;
+    }
+    .grand-profile .grand-title {
+        font-size: 2em;
+    }
+    .grand-profile .grand-name {
+        font-size: 2.8em;
+        letter-spacing: 1px;
+    }
+    .grand-profile .grand-tagline {
+        font-size: 1em;
+    }
+
+    .product-title {
+        font-size: 1.8em;
+    }
+
+    .product-price {
+        font-size: 1.3em;
+    }
+
+    .form-group label {
+        font-size: 0.9em;
+    }
+
+    .form-group input, .form-group textarea {
+        font-size: 0.9em;
+    }
+
+    .submit-button {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
